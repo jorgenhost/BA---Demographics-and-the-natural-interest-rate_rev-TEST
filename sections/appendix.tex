@@ -1,0 +1,621 @@
+\documentclass[../main.tex]{subfiles}
+\begin{document}
+
+\section{Solutions provided}
+\label{sec:appendix_solutions}
+\subsection{Households' maximization problem}
+The maximization problem for the representative household is set up to maximize expected lifetime utility discounted by $\beta$:
+    \begin{equation}
+        \max_{c_{j,t}, a_{j+1, t+1}} U_{j, t}=\sum_{i=0}^{J-j} \beta^{i} \frac{N_{j+i, t+i}}{N_{j, t}} \ln c_{j+i, t+i}
+    \end{equation}
+    
+    \begin{equation*}
+        \textrm{s.t.}~~c_{j, t}+a_{j+1, t+1}=\left(1-\tau_{t}\right)\left[\left(1-\mathbf{1}_{j \geq J R}\right) w_{t} z_{j}+\mathbf{1}_{j \geq J R} \operatorname{pen}_{t}\right]+\pi_{j, t}+b e q_{t}+\left(1+r_{t}\right) a_{j, t}
+    \end{equation*}
+Setting up the Lagrangian:
+    \begin{equation}
+    \begin{split}
+         \mathcal{L} &=\sum_{i=0}^{J-j} \beta^{i} \frac{N_{j+i, t+i}}{N_{j, t}}\left[\ln c_{j+i, t+i} +\lambda_t[(1-\tau_t)(1-\mathbf{1}_{j \geq J R})w_tz_j+\mathbf{1}_{j \geq J R}\operatorname{pen}_{t}\\
+         &+\pi_{j,t}+\operatorname{beq}_t+(1+r_t)a_{j,t}-c_{j,t}-a_{j+i,t+i}\right]]
+    \end{split}
+    \end{equation}
+Which yields the following FOC's:
+    \begin{equation}
+    \begin{aligned}
+        \frac{\partial \mathcal{L}}{\partial c_{j,t}}&=0 \leftrightarrow\\
+        \beta^0\frac{N_{j,t}}{N_{j,t}}\left[\frac{1}{c_{j,t}}-\lambda_t\right]&=0 \leftrightarrow\\
+        \frac{1}{c_{j,t}}&=\lambda_t
+    \end{aligned}
+    \end{equation}
+
+    \begin{equation}
+        \begin{aligned}
+            \frac{\partial \mathcal{L}}{a_{j+1,t+1}}&=0 \leftrightarrow\\
+            -\beta^0\frac{N_{j,t}}{N_{j,t}}\lambda_t+\beta\frac{N_{j+1,t+1}}{N_{j,t}}\lambda_{t+1}(1+r_{t+1})&=0 \leftrightarrow\\
+            \lambda_t&=\beta\frac{N_{j+1,t+1}}{N_{j,t}}\lambda_{t+1}(1+r_{+1}) \leftrightarrow\\
+            \frac{1}{c_{j,t}}&=\beta\frac{(1-\omega_{j,t})N_{j,t}}{N_{j,t}}(1+r_{t+1})\frac{1}{c_{j+1,t+1}} \leftrightarrow \\
+            c_{j+1,t+1}&=\beta(1-\omega_{j,t})(1+r_{t+1})c_{j,t} \leftrightarrow\\
+            \frac{c_{j+1,t+1}}{c_{j,t}}&=\beta(1-\omega_{j,t})(1+r_{t+1})
+        \end{aligned}
+    \end{equation}
+Which yields the Euler equation that shows the optimal consumption path. 
+\subsection{Standard law of motion}
+    \begin{equation}
+    K_{t+1}=(1-\delta)K_t+I_t
+    \end{equation}
+    \begin{equation}
+    \frac{K_{t+1}}{N_{t+1}}=\frac{(1-\delta)K_t}{(1+n_{t+1})N_t}+\frac{I_t}{(1+n_{t+1})N_t}
+    \end{equation}
+    \begin{equation}
+    (1+n_{t+1})k_{t+1}=(1-\delta)k_t+i_t
+    \end{equation}
+
+\subsection{Final goods producers' profit maximization problem}
+    \begin{equation}
+    y_t=\left[\frac{1}{N_t}\int_{0}^{N_t} y_t(\iota)^{\frac{1}{\mu}} d\iota \right]^{\mu}
+    \end{equation}
+Each final goods producer is maximizing
+    \begin{equation}
+    \max_{y_t(\iota)} y_t-p_t(\iota)y_t(\iota)
+    \end{equation}
+    \begin{equation}
+    \underset{y_t(\iota)}{\max}\left(\frac{1}{N_t}\int_{0}^{N_t} y_t(\iota)^{\frac{1}{\mu}} d\iota \right)^{\mu}-p_t(\iota)y_t(\iota)
+    \end{equation}
+FOC, $\frac{\partial \pi_t}{\partial y_t(\iota)}=0$:
+\begin{equation*}
+        
+\end{equation*}
+  \begin{equation}
+    \begin{aligned}
+    \mu\left(\frac{1}{N_t}\int_{0}^{N_t} y_t(\iota)^{\frac{1}{\mu}} d\iota \right)^{\mu-1}\frac{1}{N_t}\frac{1}{\mu}\int_{0}^{N_t}y_t(\iota)^{\frac{1}{\mu}-1} d\iota-p_t(\iota)&=0 \leftrightarrow\\
+    \left(\frac{1}{N_t}\int_{0}^{N_t} y_t(\iota)^{\frac{1}{\mu}} d\iota \right)^{\mu-1}\frac{1}{N_t}\Big[y_t(\iota)^{\frac{1-\mu}{\mu}}\cdot\iota \Big]^{N_t}_0&=p_t(\iota) \leftrightarrow\\
+    \left(\frac{1}{N_t}\int_{0}^{N_t} y_t(\iota)^{\frac{1}{\mu}} d\iota \right)^{\frac{(\mu-1)\mu}{1-\mu}}y_t(\iota)&=p_t(\iota)^{\frac{\mu}{1-\mu}} \leftrightarrow\\
+    y_t(\iota)y_t^{-1}&=p_t(\iota)^{\frac{\mu}{1-\mu}} \leftrightarrow\\
+    y_t(\iota)&=p_t(\iota)^{\frac{\mu}{1-\mu}}y_t
+    \label{eq:demand_int_goods_appendix}
+    \end{aligned}
+    \end{equation}
+Thus describing the demand schedule for intermediate goods from the perspective of final good producers.
+
+\subsection{Intermediate goods producers (stage 1)}
+Price setting:
+\begin{equation}
+\underset{p_t(\iota)}{\max} p_t(\iota)y_t(\iota)-mc_ty_t(\iota)
+\end{equation}
+\begin{equation}    
+\underset{p_t(\iota)}{\max} p_t(\iota)p_t(\iota)^{\frac{\mu}{1-\mu}}y_t-mc_tp_t(\iota)^{\frac{\mu}{1-\mu}}y_t
+\end{equation}
+\begin{equation}
+\underset{p_t(\iota)}{\max} p_t(\iota)^{\frac{1}{1-\mu}}y_t-mc_tp_t(\iota)^{\frac{\mu}{1-\mu}}y_t
+\end{equation}
+
+FOC, $\frac{\partial}{\partial p_t(\iota)}=0$:
+\begin{equation}
+\begin{aligned}
+\frac{1}{1-\mu}p_t(\iota)^{\frac{1}{1-\mu}-1}y_t&=\frac{\mu}{1-\mu}mc_tp_t(\iota)^{\frac{\mu}{1-\mu}-1}y_t \leftrightarrow\\
+p_t(\iota)^{\frac{\mu}{1-\mu}}&=\mu mc_tp_t(\iota)^{\frac{2\mu-1}{1-\mu}} \leftrightarrow\\
+p_t(\iota)&=\mu mc_t
+\end{aligned}
+\end{equation}
+
+Perfect competition when $\mu=1$. For a higher $\mu$, the degree of monopolistic competition rises as well. 
+
+
+\subsection{Factor demands: Wages \& capital (stage 2)}
+Taking the demand schedule (\ref{eq:demand_int_goods_appendix}) into account, each intermediate goods producer maximizes profits in each period. We note that as profits are time indexed within the same period, maximizing within one period is the same as maximizing over all periods:
+\begin{equation}
+    \begin{aligned}
+    \max_{w_t,r_t^k} \pi_t(\iota)&=p_t(\iota)y_t(\iota)-w_th_t(\iota)-i_t(\iota) \leftrightarrow\\
+    \pi_t(\iota)&=p_t(\iota)y_t(\iota)-w_th_t(\iota)-r_t^kk_t(\iota)
+\end{aligned}
+\end{equation}
+
+Plugging the demand schedule, the problem reads:
+
+\begin{equation}
+    \max_{w_t} \pi_t(\iota)=y_t(\iota)^{\frac{1-\mu}{\mu}}y_t^{-\frac{1-\mu}{\mu}}y_t(\iota)-w_th_t(\iota)-i_t(\iota)=y_t(\iota)^{\frac{1}{\mu}}y_t^{-\frac{1-\mu}{\mu}}-w_th_t(\iota)-i_t(\iota)
+\end{equation}
+
+The FOC w.r.t hours $h_t(\iota)$ reads:
+\begin{equation}
+    \begin{aligned}
+        \frac{\partial \pi_t(\iota)}{\partial h_t(\iota)}&=0 \leftrightarrow\\
+        w_t&=\frac{1-\alpha}{\mu}x_t^\frac{1}{\mu}k_t(\iota)^\frac{\alpha}{\mu}h_t(\iota)^{\frac{1-\alpha}{\mu}-1}y_t^{-\frac{1-\mu}{\mu}} \leftrightarrow \\
+        w_t&=\frac{1-\alpha}{\mu}x_t^\frac{1}{\mu}k_t^{\frac{\alpha}{\mu}}h_t^{\frac{1-\alpha-\mu}{\mu}}x_t^{-\frac{1-\mu}{\mu}}k_t^{-\frac{(1-\mu)\alpha}{\mu}}h_t^{-\frac{(1-\alpha)(1-\mu)}{\mu}} \leftrightarrow\\
+        w_t&=\frac{1-\alpha}{\mu}x_t^{\frac{1}{\mu}-\frac{1-\mu}{\mu}}k_t^{\frac{\alpha-(1-\mu)\alpha}{\mu}}h_t^{\frac{1-\alpha-\mu-(1-\alpha)(1-\mu)}{\mu}} \leftrightarrow\\
+        w_t&=\frac{1-\alpha}{\mu}x_tk_t^\alpha h_t^{-\alpha}
+    \end{aligned}
+\end{equation}
+
+The FOC w.r.t hours $k_t(\iota)$ reads:
+\begin{equation}
+    \begin{aligned}
+        \frac{\partial \pi_t(\iota)}{\partial k_t(\iota)}&=0 \leftrightarrow\\
+        r_t^k&=\frac{\alpha}{\mu} x_tk_t^{\alpha-1} h_t^{1-\alpha}
+    \end{aligned}
+\end{equation}
+
+Utilizing that the equilibrium is symmetric, ie. $y_t(\iota)=y_t$ due to the fact that $p_t(\iota)=1$ as all intermediate firms are identical and charge the same price in equilibrium. 
+
+\subsection{Labour and capital income share}
+\label{sec:appendix_labour_cap_income_share}
+\begin{equation}
+    \begin{aligned}
+        w_t&=\frac{1-\alpha}{\mu}x_tk_t^\alpha h_t^{-\alpha} \\
+        \frac{w_t}{y_t}&=\frac{1-\alpha}{\mu} \frac{x_tk_t^\alpha h_t^{-\alpha}}{x_tk_t^\alpha h_t^{1-\alpha}} \\
+        \frac{w_th_t}{y_t}&=\frac{1-\alpha}{\mu} 
+    \end{aligned}
+\end{equation}
+
+\begin{equation}
+    \begin{aligned}
+        r_t^k&=\frac{\alpha}{\mu} x_tk_t^{\alpha-1} h_t^{1-\alpha} \\
+        \frac{r_t^k}{y_t}&=\frac{\alpha}{\mu} \frac{x_tk_t^{\alpha-1} h_t^{1-\alpha}}{x_tk_t^\alpha h_t^{1-\alpha}} \\
+        \frac{r_t^kk_t}{y_t}&=\frac{\alpha}{\mu} 
+    \end{aligned}
+\end{equation}
+
+\section{List of model equations}
+\label{sec:appendix_equations}
+\subsection{Households}
+\begin{equation}
+c_{j, t}+a_{j+1, t+1}=\left(1-\tau_{t}\right)\left[\left(1-\mathds{1}_{j \geq J R}\right) w_{t} z_{j}+\mathds{1}_{j \geq J R} p e n_{t}\right]+\pi_{j, t}+b e q_{t}+\left(1+r_{t}\right) a_{j, t}
+\end{equation}
+
+\begin{equation}
+a_{0,t}=0
+\end{equation}
+\begin{equation}
+a_{J,t}=0
+\end{equation}
+\begin{equation}
+c_{j+1,t+1}=\beta(1-\omega_{j,t})(1+r_{t+1})c_{j,t}
+\end{equation}
+
+\subsection{Demographics}
+    \begin{equation}
+    n_{1, t+1}=\frac{N_{1, t+1}}{N_{1, t}}-1
+    \end{equation}
+    \begin{equation}
+    N_{j+1, t+1}=\left(1-\omega_{j, t}\right) N_{j . t}
+    \end{equation}
+    \begin{equation}
+    N_{t}=\sum_{j=1}^{J} N_{j, t}
+    \end{equation}
+    \begin{equation}
+    n_{t+1}=\frac{N_{t+1}}{N_{t}}-1
+    \end{equation}
+
+\subsection{Aggregation over households}
+    \begin{equation}
+    c_t=\sum_{j=1}^{J} \frac{N_{j, t}c_{j,t}}{N_{t}} 
+    \end{equation}
+    \begin{equation}
+    h_t=\sum_{j=1}^{JR-1} \frac{N_{j, t}z_j}{N_{t}} 
+    \end{equation}
+    \begin{equation}
+    a_{t+1}=\sum_{j=1}^{J} \frac{N_{j, t}a_{j+1,t+1}}{N_{t}} 
+    \end{equation}
+    
+    \begin{equation}
+    beq_{t}=\sum_{j=1}^{J} \frac{(N_{j, t-1}-N_{j,t})(1+r_t)a_{j,t} }{N_t} 
+    \end{equation}
+
+\subsection{Firms}
+    \begin{equation}
+    (1+n_{t+1})k_{t+1}=(1-\delta)k_t+i_t
+    \end{equation}
+    \begin{equation}
+    r^k_t=r_t+\delta
+    \end{equation}
+
+    \begin{equation}
+    w_t=\frac{1-\alpha}{\mu}x_tk^{\alpha}_t h^{-\alpha}_t
+    \end{equation}
+    \begin{equation}
+    y_t=x_tk^{\alpha}_th^{1-\alpha}_t
+    \end{equation}
+    \begin{equation}
+    \pi_t=y_t-w_th_t-i_t
+    \end{equation}
+
+\subsection{Government}
+    \begin{equation}
+    p e n_{t}=\varrho_{t} w_{t} \frac{\sum_{j=1}^{J R-1} N_{j, t} z_{j}}{\sum_{j=1}^{J R-1} N_{j, t}}
+    \end{equation}
+    
+    \begin{equation}
+    \tau_{t} w_{t} \sum_{j=1}^{J R-1} \frac{N_{j, t}}{N_{t}} z_{j}+\left(1+n_{t+1}\right) b_{t+1}=g_{t}+\left(1-\tau_{t}\right) \operatorname{pen}_{t} \sum_{j=J R}^{J} \frac{N_{j, t}}{N_{t}}+\left(1+r_{t}\right) b_{t}
+    \end{equation}
+
+\subsection{External sector}
+    \begin{equation}
+    1+r_{t+1}=(1+\xi(\exp \left(-\frac{b_{t}^{*}}{y_t}\right)-1)\left(1+r_{t+1}^{*}\right)
+    \end{equation}
+
+\subsection{Market clearing}
+    \begin{equation}
+    a_{t}=k_{t}+b_{t}+b_{t}^{*}
+    \end{equation}
+    
+    \begin{equation}
+    \left(1+n_{t+1}\right) b_{t+1}^{*}=\left(1+r_{t}\right) b_{t}^{*}+y_{t}-c_{t}-i_{t}-g_{t}
+    \end{equation}
+
+
+\section{Dynare code}
+\label{sec:Dynare_code_appendix}
+Below is the main Dynare code by \textcite{bielecki2020demographics} that we calibrate to model a Danish economy. 
+\begin{lstlisting}[breaklines]
+        // J: number of OLG cohorts
+@#define J  = 80
+J   = 80;
+
+var
+// Demography (80+2 variables)
+	@#for j in 1:J
+		N_rel_@{j}
+	@#endfor
+	
+	N_rel n
+		
+// Households (80+81+80 variables)
+	@#for j in 1:J
+		c_@{j}
+	@#endfor
+	
+	@#for j in 0:J
+		a_@{j}
+	@#endfor
+	
+// Pensions + profits (5 variables)
+	pop_ret t_p pen fr
+		
+// Aggregation (4 variables)
+	c a h beq
+	
+// Financial intermediary (8 variables)
+	k inv q p_d R_a b b_s Gamma
+	
+// Firms (12 variables)
+	mc w r_k pH yH f gdp
+	
+// Monetary policy (6 variables)
+	g_gdp_pot r pi
+	
+// Deterministic productivity
+    g
+	
+// Reporting
+	feas
+    gdp_obs c_obs inv_obs;
+
+		
+varexo
+// Deterministic demography 
+	n_1
+	@#for j in 1:J-1
+		mort_@{j}
+	@#endfor
+// Deterministic productivity
+    g_obs
+// Deterministic foreign real interest rate
+    r_s
+// Deterministic retirement age
+	@#for j in 1:J
+        ret_@{j}
+	@#endfor
+// Pension + fiscal system
+    rep b_y g_y
+;
+
+
+parameters
+
+// Households
+	@#for j in 1:J
+		z_@{j}
+	@#endfor
+	
+	betta sigmma vphi
+	
+// Financial intermediary
+	delta gamm
+	
+// Firms
+	alffa mu_H tau_H
+	
+// Monetary policy
+	pi_ss
+
+// Programming
+	dt
+	;
+	
+
+// Read in external data
+@#if simulation == 1
+    load data_G7_EA
+@#else
+    load data_EA
+@#endif
+	D = size(mort_dt, 1);
+    z = age_prof(1:J); 
+	
+// Assign parameter values
+	
+// Households
+	@#for j in 1:J
+		z_@{j} = z(@{j});
+	@#endfor
+	
+@#if simulation == 1
+	betta	= 1.0093; 
+@#else
+	betta	= 1.0082; 
+@#endif
+	sigmma	= 1;
+	vphi	= 4; 
+	
+// Financial intermediary
+	delta	= 0.1;
+@#if simulation == 4
+	gamm 	= 0.0016;
+@#else
+	gamm 	= 0.020;
+@#endif
+	
+// Firms
+	alffa	= 0.25;
+	mu_H	= 1.25;
+	tau_H	= 1;
+	
+// Monetary policy
+	pi_ss	= 1.02;
+
+model;
+
+#fc = 0*(mu_H-1)*steady_state(gdp);
+
+// Demography (80+2 equations)
+	N_rel_1 = 1;
+	
+	@#for j in 2:J
+		N_rel_@{j} = (1-mort_@{j-1}(-1)) * N_rel_@{j-1}(-1)/(1+n_1);
+	@#endfor
+	
+	N_rel = (
+	@#for j in 1:J
+		+ N_rel_@{j}
+	@#endfor
+	);
+	
+	n	= N_rel/N_rel(-1) * (1+n_1) - 1;
+	
+// Households (80+81+80 equations)
+	@#for j in 1:J
+		c_@{j} + (1+g(+1))*a_@{j} = (1-t_p+fr)*w*z_@{j}*(1-ret_@{j}) + (1-t_p)*pen*ret_@{j} + beq + R_a/pi*a_@{j-1}(-1);
+	@#endfor
+	
+	a_@{0} = 0;
+	a_@{J} = 0;
+	
+	@#for j in 1:J-1
+		c_@{j}^(-sigmma) = betta * (1-mort_@{j}) * (c_@{j+1}(+1) * (1+g(+1)))^(-sigmma) * R_a(+1)/pi(+1);
+	@#endfor
+	
+// Pensions (4 equations)
+	pop_ret = (
+	@#for j in 1:J
+		+ ret_@{j}*N_rel_@{j}
+	@#endfor
+	)/N_rel;
+	
+	b = b_y * gdp;
+	pen = rep*w*h/(1-pop_ret);
+	(1+n(+1))*(1+g(+1))*b + t_p*w*h = R_a/pi*b(-1) + (1-t_p)*pen*pop_ret + g_y*gdp;
+	
+	
+// Aggregation (4 equations)
+	c	= (
+	@#for j in 1:J
+		+ N_rel_@{j}*c_@{j}
+	@#endfor
+	)/N_rel;
+	
+	a = (
+	@#for j in 1:J
+		+ N_rel_@{j}*a_@{j}
+	@#endfor
+	)/(N_rel(+1)*(1+n_1(+1)));
+	
+	h	= (
+	@#for j in 1:J
+		+ N_rel_@{j}*z_@{j}*(1-ret_@{j})
+	@#endfor
+	)/N_rel;
+	
+	beq	= (
+	@#for j in 2:J
+		+ (N_rel_@{j-1}(-1)/(1+n_1) - N_rel_@{j}) * R_a/pi * a_@{j-1}(-1)
+	@#endfor
+	)/N_rel;
+
+    fr = f/(w*h);
+	
+// Financial intermediary (8 equations)
+	
+	(1+n(+1))*(1+g(+1))*k	= (1-delta)*k(-1) + inv;
+	1	= q;
+    R_a = (r_k + q*(1-delta))/q(-1)*pi;
+    r	= R_a/pi - 1;	
+	p_d = 0;
+    a	= b + b_s + q*k + p_d;
+	
+	@#if simulation == 3 || simulation == 4
+		Gamma = 1 + gamm*(exp(-b_s/pH/gdp)-1);
+        Gamma*(1+r_s(1)) = 1 + r(1);
+	@#else
+		Gamma = 0;
+		b_s = 0;
+	@#endif
+
+// Firms (12 equations)
+	w	= mc*(1-alffa)*k(-1)^alffa*h^(-alffa);
+	r_k	= mc*alffa*k(-1)^(alffa-1)*h^(1-alffa);
+	
+	pH	= mu_H*mc/tau_H;
+	pH	= 1;
+	
+	yH	= k(-1)^alffa*h^(1-alffa) - fc;
+	
+	f	= pH*yH - w*h - r_k*k(-1) + (1+n(+1))*(1+g(+1))*q*k - (1-delta)*q*k(-1) - inv;
+	gdp	= yH;
+	
+	pi = pi_ss;
+	g_gdp_pot = gdp/gdp(-1);	
+	
+// Reporting
+	feas = -(1+n(+1))*(1+g(+1))*b_s + Gamma*(1+r_s)*b_s(-1) + gdp - c - inv - g_y*gdp; 
+	gdp_obs = 100*log(gdp/steady_state(gdp));
+    c_obs = 100*log(c/steady_state(c));
+    inv_obs = 100*log(inv/steady_state(inv));
+
+// 356 equations
+	g = (1/(1-alffa))*g_obs;
+end;
+
+
+
+dt = 1; 
+initval;
+    n_1 = n_1_dt(dt);
+    @#for j in 1:J-1
+        mort_@{j} = mort_dt(dt, @{j});
+    @#endfor
+    @#for j in 1:J
+        ret_@{j} = ret_dt(dt, @{j});
+    @#endfor
+    g_obs = g_dt(dt);
+    r_s = r_s_dt(dt);
+    rep = rep_dt(dt);
+    b_y = b_y_dt(dt);
+    g_y = g_y_dt(dt);
+end;
+steady;
+
+
+for i = 1:M_.endo_nbr                        
+    eval([M_.endo_names(i,:), '= oo_.steady_state(',num2str(i),');']);
+end
+
+dt = D;
+endval;
+    n_1 = n_1_dt(dt);
+    @#for j in 1:J-1
+        mort_@{j} = mort_dt(dt, @{j});
+    @#endfor
+    @#for j in 1:J
+        ret_@{j} = ret_dt(dt, @{j});
+    @#endfor
+    g_obs = g_dt(dt);
+    r_s = r_s_dt(dt);
+    rep = rep_dt(dt);
+    b_y = b_y_dt(dt);
+    b_y = b_y_dt(dt);
+    g_y = g_y_dt(dt);
+end;
+steady;
+
+
+@#for j in 1:J-1
+    mm = mort_dt(:, @{j});
+    shocks;
+        var mort_@{j};
+        periods 1:181;
+        values (mm);
+    end;
+@#endfor
+
+nn = n_1_dt;
+shocks;
+    var n_1;
+    periods 1:181;
+    values (nn);
+end;
+
+gg = g_dt;
+shocks;
+    var g_obs;
+    periods 1:181;
+    values (gg);
+end;
+
+rrss = r_s_dt(2:181);
+shocks;
+    var r_s;
+    periods 1:180;
+    values (rrss);
+end;
+
+rrepp = rep_dt;
+shocks;
+    var rep;
+    periods 1:181;
+    values (rrepp);
+end;
+
+bbyy = b_y_dt;
+shocks;
+    var b_y;
+    periods 1:181;
+    values (bbyy);
+end;
+
+ggyy = g_y_dt;
+shocks;
+    var g_y;
+    periods 1:181;
+    values (ggyy);
+end;
+
+@#for j in 1:J
+    rr = ret_dt(:, @{j});
+    shocks;
+        var ret_@{j};
+        periods 1:181;
+        values (rr);
+    end;
+@#endfor
+
+simul(periods=398,maxit=5);	
+
+work=0;
+retired=0;
+for i=1:44
+    eval(['work = work + N_rel_',num2str(i),';'])
+end
+for i=45:80
+    eval(['retired = retired + N_rel_',num2str(i),';'])
+end
+dep_ratio=retired./work;
+
+@#if simulation == 1
+	save Results_G7_EA_closed;
+@#endif
+
+@#if simulation == 2
+	save Results_EA_closed;
+@#endif
+
+@#if simulation == 3
+	save Results_EA_open;
+@#endif
+
+@#if simulation == 4
+	save Results_EA_open_bbk;
+@#endif
+    
+[100*mean(r(100:109)) 100*mean(b_s(100:109)./gdp(100:109))]
+\end{lstlisting}
+\end{document}

@@ -1,0 +1,177 @@
+\documentclass[main.tex]{subfiles}
+\begin{document}
+\section{The model}
+\label{sec:The_model}
+This section describes the OLG model used in the paper, which is based entirely on the setup in \textcite{bielecki2020demographics}. We state the most central solutions with further derivations provided in Appendix \ref{sec:appendix_solutions}. A list of all model equations used for calibrating is provided in Appendix \ref{sec:appendix_equations}.
+
+\subsection{Households}
+The model consists of agents who enter the model at the age of 20. Agents at the age of 20 are assigned an index $j=1$ and can live up to 99 years, $(j=J=80)$. Crucially, to impose heterogeneity and illustrate saving behaviour over time, agents are subject to exogenous age- and time-dependent mortality risk $\omega_{j,t}$.
+
+Thus, the model is populated by 80 cohorts of overlapping generations at any point in time. The size of the cohort at age $j$ in time $t$ is denoted by $N_{j,t}$. Each household consists of a single agent who maximizes expected remaining lifetime utility:
+
+\begin{equation}
+U_{j, t}=\sum_{i=0}^{J-j} \beta^{i} \frac{N_{j+i, t+i}}{N_{j, t}} \ln c_{j+i, t+i}
+\end{equation}
+s.t.
+\begin{equation}
+c_{j, t}+a_{j+1, t+1}=\left(1-\tau_{t}\right)\left[\left(1-\mathds{1}_{j \geq J R}\right) w_{t} z_{j}+\mathds{1}_{j \geq J R} p e n_{t}\right]+\pi_{j, t}+b e q_{t}+\left(1+r_{t}\right) a_{j, t}
+\label{eq:budget_constraint_OG}
+\end{equation}
+
+Where $\mathds{1}_{j \geq J R}$ is an indicator for being retired. $w_t$ is real gross wages, and $z_j$ is an exogenously given labour productivity approximated by hourly wage, see section \ref{sec:life-cycle_characteristics}.
+
+For simplicity, we assume the special case of constant relative risk aversion (CRRA) preferences, where the coefficient of relative risk aversion, typically denoted $\sigma$ in the literature, is equal to one (log-utility). This implies that income and substitution effects directly offset each other given a change in the interest rate $r_{t+1}$. A representative household's utility depends on the following variables. $c_{j+i, t+i}$ defines consumption, $\beta$ is the discount factor and $\frac{N_{j+i, t+i}}{N_{j, t}}$ is the probability of surviving at least i more years.
+
+Households work until reaching the age of 65 $(JR=46)$ from which they will receive pension benefits.\footnote{Source: \textcite{Folkepension}. To impose a representative retirement age across the whole simulated period in our baseline scenario, we have chosen 65 to reflect recent Danish pension policy. A more detailed analysis of increasing retirement age will follow in section \ref{sec:pension_reform}} The government runs a pay-as-you-go (PAYG) pension system where participation is mandatory, so all working agents pay a social security contribution that is imposed together with other taxes $\tau_t$ on labour income. Households also receive age-specific dividends $\pi_{j,t}$ from monopolistically competitive intermediate goods producers.
+
+Abstracting from uncertainty, agents can smooth consumption by trading risk-free assets $a_{j,t}$, consisting of domestic capital, domestic government debt and foreign assets, which are all perfect substitutes from the perspective of households. We touch upon this stylized assumption in Section \ref{sec:Discussion.Pettm}. To allow for lending between cohorts, $a_{j,t}$ can be negative. Households have not accumulated any assets at the age of 20 and cannot finance consumption by rolling over debt without ever servicing it, which is a terminal condition. Furthermore, agents maximise utility in optimum, allowing no assets to go to waste:  
+\begin{equation}
+a_{0,t}=0
+\end{equation}
+\begin{equation}
+a_{J,t}=0
+\end{equation}
+Since most agents in the economy unexpectedly die before reaching the maximum age, they leave bequests $beq_t$ that are evenly distributed across all living agents. This is a fairly controversial assumption that we discuss in Section \ref{sec:Discussion.MS}.
+
+Solving the households maximization problem yields the Euler equation:
+\begin{equation}
+\label{eq:Euler_equation}
+c_{j+1,t+1}=\beta(1-\omega_{j,t})(1+r_{t+1})c_{j,t}
+\end{equation}
+The time- and age-dependent Euler equation defines the optimal consumption path. The interpretation is that a lower mortality risk $\omega_{j,t}$, which is exogenous and known to every agent, for a given cohort at age $j$ and time $t$ induces agents to postpone consumption and save more. Furthermore, an increase in the interest rate $r_{t+1}$ leads to an increase in future consumption as the return on savings increases. 
+
+\subsection{Demographics}
+The main drivers of the model are the exogenous mortality risk variable $\omega_{j,t}$ and, to describe fertility, the growth rate of the 20 year old cohort $n_{1,t+1}=\frac{N_{1,t+1}}{N_{1,t}}$. The size of each cohort is given by:
+
+    \begin{equation}
+    N_{j+1, t+1}=\left(1-\omega_{j, t}\right) N_{j , t}
+    \end{equation}
+Total population $N_t$ is the sum of all living cohorts:
+    \begin{equation}
+    N_{t}=\sum_{j=1}^{J} N_{j, t}
+    \end{equation}
+The population growth rate $n_{t+1}$ evolves according to:
+    \begin{equation}
+    n_{t+1}=\frac{N_{t+1}}{N_{t}}-1
+    \end{equation}
+The aggregate per capita allocations over all living households are given by:
+    \begin{equation}
+    c_{t}=\sum_{j=1}^{J} \frac{N_{j,t}c_{j,t}}{N_{t}}
+    \label{eq:consumption_allocation}
+    \end{equation}
+
+    \begin{equation}
+    a_{t+1}=\sum_{j=1}^{J} \frac{N_{j,t}a_{j+1,t+1}}{N_{t+1}}
+    \label{eq:a_t+1_allocation}
+    \end{equation}
+
+    \begin{equation}
+    h_{t}=\sum_{j=1}^{JR-1} \frac{N_{j,t}z_j}{N_{t}}
+    \end{equation}
+
+    \begin{equation}
+    beq_{t}=\sum_{j=1}^{J} \frac{(N_{j-1,t-1}-N_{j,t})(1+r_t)a_{j,t}}{N_{t}}
+    \end{equation}
+
+These allocations allow for incorporating Danish micro-level data, particularly on consumption (\ref{eq:consumption_allocation}) and assets (\ref{eq:a_t+1_allocation}) for each cohort. 
+
+\subsection{Firms}
+The model consists of two types of firms. Perfectly competitive final goods producers and monopolistically competitive intermediate goods producers indexed by $\iota$. 
+
+\subsubsection{Final goods producers}
+Final goods producers acquire intermediate goods as the only input in their respective CES production function:
+\begin{equation}
+y_{t}=\left[\frac{1}{N_{t}} \int_{0}^{N_{t}} y_{t}(\iota)^{\frac{1}{\mu}} \mathrm{d} \iota\right]^{\mu}
+\end{equation}
+$\mu\geq1$ defines the markup that appears due to monopolistic competition between intermediate goods producers. The final goods producers' profit maximization problem leads to the following demand for intermediate goods:
+    \begin{equation}
+    \label{eq:demand_int_goods}
+    y_t(\iota)=p_t(\iota)^{\frac{\mu}{1-\mu}}y_t
+    \end{equation}
+
+\subsubsection{Intermediate goods producers}
+
+Intermediate goods producers hire labour, rent capital and produce according to a standard Cobb-Douglas production function:
+    \begin{equation}
+    y_{t}(\iota)=x_{t} k_{t}(\iota)^{\alpha} h_{t}(\iota)^{1-\alpha}
+    \end{equation}
+Where $x_t$ denotes total factor productivity (denoted TFP henceforth) and $k_t$ physical capital that accumulates according to the standard law of motion:
+    \begin{equation}
+        k_{t+1}(\iota)=(1-\delta)k_t(\iota)+i_t(\iota)
+    \end{equation}
+The above mentioned law of motion applies for the individual intermediate goods producer. Total capital accumulation is given by:
+    \begin{equation}
+    \begin{aligned}
+        \frac{K_{t+1}}{N_{t+1}}&=\frac{(1-\delta)K_t-I_t}{(1+n_{t+1})N_t} \leftrightarrow \\
+        (1+n_{t+1})k_{t+1}&=(1-\delta)k_t-i_t
+    \end{aligned}
+    \end{equation}
+Intermediate goods producer profit flows are given by: 
+    \begin{align}
+        \pi_t(\iota)&=p_t(\iota)y_t(\iota)-w_th_t(\iota)-i_t(\iota)
+    \end{align}
+Intermediate goods producers maximize their discounted value of profits taking into account the demand schedule (\ref{eq:demand_int_goods}) from final goods producers. These profits generated by intermediate goods producers are assumed to be distributed to households in the economy proportionally to their labour income.
+
+The optimal price setting by intermediate goods producers leads to the following equation for the price level:
+
+\begin{equation}
+p_t(\iota)=\mu mc_t
+\end{equation}
+
+\subsection{Government}
+The government runs a PAYG pension system. It purchases goods on the market defined as government consumption expenditure $G_t$, it finances its expenditures by issuing debt $B_t$ and by charging taxes $\tau_t$ proportionally to labour income. The government's intertemporal budget constraint is stated as:
+    \begin{equation}
+        \tau_{t} w_{t} \sum_{j=1}^{J R-1} N_{j, t} z_{j}+ B_{t+1}&=G_{t}+\left(1-\tau_{t}\right) \operatorname{pen}_{t} \sum_{j=J R}^{J} N_{j, t}+\left(1+r_{t}\right) B_{t}
+        \label{eq:government_budget_constraint_OG}
+    \end{equation}
+The left-hand side denotes the revenues, and the right-hand side denotes expenditures.
+
+Pension benefits transferred to retired agents are a product of the economy-wide average wage $w_t$ and replacement rate $\varrho_t$:
+
+\begin{equation}
+p e n_{t}=\varrho_{t} w_{t} \frac{\sum_{j=1}^{J R-1} N_{j, t} z_{j}}{\sum_{j=1}^{J R-1} N_{j, t}}
+\end{equation}
+
+Public debt $B_t$, government expenditures $G_t$ and the replacement rate $\varrho_t$ are exogenous, which leaves the tax rate $\tau_t$ to be adjusted for the budget constraint to hold. 
+
+\subsection{External sector}
+Agents in the economy have access to financial markets abroad, allowing them to accumulate foreign assets or borrow from abroad. We define that all foreign transactions are imposed an additional charge $\Gamma_t$ per unit borrowed. Thus, the uncovered interest parity is defined as:
+    \begin{equation}
+    1+r_{t+1}=\left(1+\Gamma_{t}\right)\left(1+r_{t+1}^{*}\right)
+    \end{equation}
+
+The world interest rate $r^*_t$ is exogenous from a Danish perspective. $\Gamma_t$ determines the intermediation wedge (risk premium), and it is assumed to depend on net foreign assets, denoted $B^*_t$, relative to GDP: 
+
+\begin{equation}
+\Gamma_{t}=\xi\left(\exp \left(-B_{t}^{*} / Y_{t}\right)-1\right)
+\end{equation}
+
+This implies that for a higher $B^*_t$, the greater the financial wedge. For agents, this captures the behavioural effect of possible foreign defaults. $\xi$ formally denotes the debt elasticity of the risk premium, but it can be interpreted as the degree of financial openness. We discuss dynamics associated with an open economy model setup and interpretations of different values of $\xi$ in Section \ref{sec:Role_of_openness}.
+
+By combining the 2 assumptions, we obtain the following equation for the external sector.
+    \begin{equation}
+    1+r_{t+1}=\left[1+\xi\left(\exp \left(-b_{t}^{*} / y_{t}\right)-1\right)\right]\left(1+r_{t+1}^{*}\right)
+    \end{equation}
+
+
+\subsection{Market clearing} 
+Finally, the model is closed by a set of clearing conditions. In equilibrium, $p(\iota)=1$ as all intermediate goods producers are identical and charge the same price. Thus (\ref{eq:demand_int_goods}) states that demand equals supply in equilibrium, ensuring market clearing. Furthermore, aggregate production is modelled by a Cobb-Douglas function:
+
+    \begin{equation}
+    Y_{t}=x_{t} K_{t}^{\alpha} H_{t}^{1-\alpha}
+    \end{equation}
+Clearing of assets implies that all assets in the economy consist of capital, domestic government debt (bonds) and foreign assets:
+    \begin{equation}
+        A_t=K_t+B_t+B^*_t
+    \end{equation}
+Recall that these assets are perfect substitutes and earn the same interest rate $r_t$. 
+Finally, the following law of motion for net foreign assets applies:
+
+\begin{equation}
+    B^*_{t+1}=(1+r_t)B^*_t+Y_t-C_t-I_t-G_t
+\end{equation}
+
+
+\subsection{Exogenous forces}
+To summarize, several exogenous forces drive the model. The growth rate of 20-year-olds ($n_{1,t}$), which inherently describes fertility, and the age- and time-dependent mortality risk $\omega_{j,t}$ are the main demographic drivers of the model. Government expenditure $G_t$, the replacement rate $\varrho_t$ and public debt $B_t$ are all exogenously determined by the government. Finally, in this small open economy model, two exogenous processes come from abroad - the world technology frontier $x_t$ and foreign real interest rate $r_t^*$. 
+\end{document}

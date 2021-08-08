@@ -1,0 +1,2 @@
+If households are happy to accept large swings in consumption from period to period (σ > 1), then they won’t adjust their savings by much in response to changes in productivity growth, so real interest rates will be insensitive to changes in trend productivity growth. But empirical estimates from the literature suggest
+the opposite is true – households do care about smoothed consumption (σ < 1) (Rachel and Smith 2015). 
